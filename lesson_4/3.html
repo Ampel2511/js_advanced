@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            border-style: solid;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="input_area">
+        <form action="#">
+            <h4 class="h4">Обратная связь</h4>
+            Имя <input id="user_name" type="text" placeholder="Иванов Иван" class="area">
+            <span id="name_error" class="hidden"> Error! </span> <br>
+            Телефон <input id="phone" type="text" placeholder="+7(000)000-0000" class="area">
+            <span id="phone_error" class="hidden"> Error! </span> <br>
+            Email <input id="email" type="email" placeholder="mymail@mail.ru, my.mail@mail.ru, my-mail@mail.ru"
+                class="area">
+            <span id="email_error" class="hidden"> Error! </span> <br>
+            Message <br>
+            <textarea cols="68" rows="10" class="area"></textarea> <br>
+            <button type="submit" class="button">Отправить</button>
+            <button type="reset" class="button">Удалить</button> <br>
+        </form>
+    </div>
+    <script>
+        let user_name = document.getElementById('user_name')
+        let phone = document.getElementById('phone')
+        let email = document.getElementById('email')
+        let form = document.querySelector('form')
+        let regexp_user_name = /\p{L}/u
+        let regexp_phone = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/
+        let regexp_email = /^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,6})$/
+        form.addEventListener('submit', function (event) {
+            if (!regexp_user_name.test(user_name.value) || !user_name.value) {
+                user_name.style.borderColor = 'red'
+                document.getElementById('name_error').classList.remove('hidden')
+                event.preventDefault()
+            } else {
+                document.getElementById('name_error').classList.add('hidden')
+                user_name.style.borderColor = 'green'
+            }
+            if (!regexp_phone.test(phone.value) || !phone.value) {
+                phone.style.borderColor = 'red'
+                document.getElementById('phone_error').classList.remove('hidden')
+                event.preventDefault()
+            } else {
+                document.getElementById('phone_error').classList.add('hidden')
+                phone.style.borderColor = 'green'
+            }
+            if (!regexp_email.test(email.value) || !email.value) {
+                email.style.borderColor = 'red'
+                document.getElementById('email_error').classList.remove('hidden')
+                event.preventDefault()
+            } else {
+                document.getElementById('email_error').classList.add('hidden')
+                email.style.borderColor = 'green'
+            }
+        })
+    </script>
+</body>
+
+</html>
