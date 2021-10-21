@@ -1,0 +1,22 @@
+{
+  "name": "lesson_7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "moment": "^2.29.1",
+    "node-static": "^0.7.11"
+  },
+  "devDependencies": {
+    "webpack": "^5.59.1",
+    "webpack-cli": "^4.9.1"
+  },
+  "scripts": {
+    "test": "jasmine",
+    "build": "webpack --mode=production"
+  },
+  "author": "",
+  "license": "ISC"
+}
